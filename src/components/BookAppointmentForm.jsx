@@ -1,5 +1,7 @@
 
 // I NEED THE JSON FOR THIS COMPONENT...
+import { toast } from "react-toastify";
+
 
 
 import React from "react";
@@ -18,9 +20,11 @@ const handleSubmit = (e) => {
 
     //logic for inputs validation
     if (!fullName || !email || !age || !date) { //if there is no value of the inputs it will show an alert
-      alert("Please fill in all fields.");
+      toast.warning("Please fill in all fields.");
       return;
     }  
+
+  
 
     const  newAppointment = {
       fullName,
@@ -30,7 +34,7 @@ const handleSubmit = (e) => {
     };
 
     //Sending data to the server
-    fetch("json/link-goes here", {
+    fetch("http://localhost:3000/appointments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +49,7 @@ const handleSubmit = (e) => {
       })
       .then((data) => {
         console.log("Success:", data);
-        alert("Appointment booked successfully!");
+        toast.alert("Appointment booked successfully!");
 
         // Clear form fields
         setFullName("");
@@ -55,7 +59,9 @@ const handleSubmit = (e) => {
       })
       .catch((error) => {
         console.error("Error:", error);
-        alert("There was a problem booking your appointment. Please try again.");
+        toast.error(
+          "There was a problem booking your appointment. Please try again."
+        );
       });
  
 
@@ -100,7 +106,7 @@ const handleSubmit = (e) => {
           onChange={handleAgeChange}
         ></input>
         <input
-          type="number"
+          type="date"
           placeholder="dd/mm/yyy"
           value={date}
           onChange={handleDateChange}
