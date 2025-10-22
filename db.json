@@ -1,0 +1,12 @@
+{
+  "doctors": [
+    { "id": 1, "name": "Dr. Mary Kim", "specialty": "Pediatrics" },
+    { "id": 2, "name": "Dr. Ali Mwangi", "specialty": "Cardiology" },
+    { "id": 3, "name": "Dr. Jane Otieno", "specialty": "Dermatology" },
+    { "id": 4, "name": "Dr. Kevin Ouma", "specialty": "Orthopedics" },
+    { "id": 5, "name": "Dr. Susan Njeri", "specialty": "Neurology" }
+  ],
+  "appointments": [
+    { "id": 1, "patient": "Peter Emu", "doctorId": 2, "date": "2025-10-20" }
+  ]
+}
