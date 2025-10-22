@@ -1,113 +1,155 @@
-
-// I NEED THE JSON FOR THIS COMPONENT...
-
-
-import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react"; // For managing form data and fetching doctors
+import axios from "axios"; // To talk to the backend
+import toast from "react-hot-toast"; // For pop-up notifications
 
 function BookAppointmentForm() {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [age, setAge] = useState("");
-  const [date, setDate] = useState("");
- 
+  // Store all form inputs in one object
+  const [formData, setFormData] = useState({
+    patient: "",
+    contact: "",
+    age: "",
+    doctorId: "",
+    date: "",
+  });
+  const [doctors, setDoctors] = useState([]); // Store doctors for the dropdown
+  const [errors, setErrors] = useState({}); // Store any validation errors
 
+  // Fetch doctors for the dropdown when the component loads
+  useEffect(() => {
+    axios.get("http://localhost:3000/doctors").then((response) => {
+      setDoctors(response.data); // Save the list of doctors
+    });
+  }, []); // Run once when the component loads
 
-const handleSubmit = (e) => {
-    e.preventDefault();
+  // Update form data when the user types
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value }); // Update the changed field
+  };
 
-    //logic for inputs validation
-    if (!fullName || !email || !age || !date) { //if there is no value of the inputs it will show an alert
-      alert("Please fill in all fields.");
+  // Check if all fields are filled correctly
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.patient) newErrors.patient = "Please enter your name";
+    if (!formData.contact) newErrors.contact = "Please enter your contact info";
+    if (!formData.age || formData.age <= 0) newErrors.age = "Please enter a valid age";
+    if (!formData.doctorId) newErrors.doctorId = "Please select a doctor";
+    if (!formData.date) newErrors.date = "Please select a date";
+    return newErrors;
+  };
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Stop the page from reloading
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors); // Show errors if any fields are invalid
       return;
-    }  
+    }
 
-    const  newAppointment = {
-      fullName,
-      email,
-      age,
-      date,
-    };
-
-    //Sending data to the server
-    fetch("json/link-goes here", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newAppointment),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
+    // Send the appointment to the backend
+    axios
+      .post("http://localhost:3000/appointments", {
+        ...formData,
+        age: parseInt(formData.age), // Convert age to a number
       })
-      .then((data) => {
-        console.log("Success:", data);
-        alert("Appointment booked successfully!");
-
-        // Clear form fields
-        setFullName("");
-        setEmail("");
-        setAge("");
-        setDate("");
+      .then(() => {
+        toast.success("Appointment booked successfully!"); // Show success pop-up
+        // Reset the form to blank
+        setFormData({
+          patient: "",
+          contact: "",
+          age: "",
+          doctorId: "",
+          date: "",
+        });
+        setErrors({}); // Clear any errors
       })
-      .catch((error) => {
-        console.error("Error:", error);
-        alert("There was a problem booking your appointment. Please try again.");
+      .catch(() => {
+        toast.error("Failed to book appointment. Try again!"); // Show error pop-up
       });
- 
-
-
-    // Handle form submission logic here
-    console.log("Appointment booked for:", { fullName, email, age, date });
-  }
-
-  const handleNameChange = (e) => {
-    setFullName(e.target.value);
-  };
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-  const handleAgeChange = (e) => {
-    setAge(e.target.valueAsNumber);
-  };
-  const handleDateChange = (e) => {
-    setDate(e.target.valueAsDate);
   };
 
   return (
-    <div>
-      <h2>Book Appointment Form</h2>
-      <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white p-6 rounded-lg shadow-md max-w-md mx-auto"
+    >
+      {/* White card with padding, rounded corners, shadow, and centered */}
+      <h2 className="text-2xl font-bold mb-4 text-gray-800">Book an Appointment</h2>
+
+      <div className="mb-4">
+        <label className="block text-gray-700">Patient Name</label>
         <input
           type="text"
-          placeholder="Full Name"
-          value={fullName}
-          onChange={handleNameChange}
-        ></input>
+          name="patient"
+          value={formData.patient}
+          onChange={handleChange}
+          className="w-full p-2 border rounded"
+        />
+        {errors.patient && <p className="text-red-500 text-sm">{errors.patient}</p>}
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-gray-700">Contact</label>
         <input
           type="text"
-          placeholder="email"
-          value={email}
-          onChange={handleEmailChange}
-        ></input>
+          name="contact"
+          value={formData.contact}
+          onChange={handleChange}
+          className="w-full p-2 border rounded"
+        />
+        {errors.contact && <p className="text-red-500 text-sm">{errors.contact}</p>}
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-gray-700">Age</label>
         <input
           type="number"
-          placeholder="age"
-          value={age}
-          onChange={handleAgeChange}
-        ></input>
+          name="age"
+          value={formData.age}
+          onChange={handleChange}
+          className="w-full p-2 border rounded"
+        />
+        {errors.age && <p className="text-red-500 text-sm">{errors.age}</p>}
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-gray-700">Doctor</label>
+        <select
+          name="doctorId"
+          value={formData.doctorId}
+          onChange={handleChange}
+          className="w-full p-2 border rounded"
+        >
+          <option value="">Select a doctor</option>
+          {doctors.map((doctor) => (
+            <option key={doctor.id} value={doctor.id}>
+              {doctor.name} ({doctor.specialty})
+            </option>
+          ))}
+        </select>
+        {errors.doctorId && <p className="text-red-500 text-sm">{errors.doctorId}</p>}
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-gray-700">Date</label>
         <input
-          type="number"
-          placeholder="dd/mm/yyy"
-          value={date}
-          onChange={handleDateChange}
-        ></input>
-        <button type="submit">Book Appointment</button>
-      </form>
-    </div>
+          type="date"
+          name="date"
+          value={formData.date}
+          onChange={handleChange}
+          className="w-full p-2 border rounded"
+        />
+        {errors.date && <p className="text-red-500 text-sm">{errors.date}</p>}
+      </div>
+
+      <button
+        type="submit"
+        className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
+      >
+        Book Appointment
+      </button>
+    </form>
   );
 }
 
