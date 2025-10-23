@@ -1,9 +1,4 @@
-
-// I NEED THE JSON FOR THIS COMPONENT...
 import { toast } from "react-toastify";
-
-
-
 import React from "react";
 import { useState } from "react";
 
@@ -12,21 +7,18 @@ function BookAppointmentForm() {
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
   const [date, setDate] = useState("");
- 
 
-
-const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     //logic for inputs validation
-    if (!fullName || !email || !age || !date) { //if there is no value of the inputs it will show an alert
+    if (!fullName || !email || !age || !date) {
+      //if there is no value of the inputs it will show an alert
       toast.warning("Please fill in all fields.");
       return;
-    }  
+    }
 
-  
-
-    const  newAppointment = {
+    const newAppointment = {
       fullName,
       email,
       age,
@@ -63,12 +55,10 @@ const handleSubmit = (e) => {
           "There was a problem booking your appointment. Please try again."
         );
       });
- 
-
 
     // Handle form submission logic here
     console.log("Appointment booked for:", { fullName, email, age, date });
-  }
+  };
 
   const handleNameChange = (e) => {
     setFullName(e.target.value);
@@ -85,35 +75,43 @@ const handleSubmit = (e) => {
 
   return (
     <div>
-      <h2>Book Appointment Form</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Full Name"
-          value={fullName}
-          onChange={handleNameChange}
-        ></input>
-        <input
-          type="text"
-          placeholder="email"
-          value={email}
-          onChange={handleEmailChange}
-        ></input>
-        <input
-          type="number"
-          placeholder="age"
-          value={age}
-          onChange={handleAgeChange}
-        ></input>
-        <input
-          type="date"
-          placeholder="dd/mm/yyy"
-          value={date}
-          onChange={handleDateChange}
-        ></input>
-        <button type="submit">Book Appointment</button>
-      </form>
-    </div>
+    
+        <h2>
+          Book Appointment Form
+        </h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={fullName}
+            onChange={handleNameChange}
+          ></input>
+          <input
+            type="text"
+            placeholder="email"
+            value={email}
+            onChange={handleEmailChange}
+          ></input>
+          <input
+            type="number"
+            placeholder="age"
+            value={age}
+            onChange={handleAgeChange}
+          ></input>
+          <input
+            type="date"
+            placeholder="dd/mm/yyy"
+            value={date}
+            onChange={handleDateChange}
+          ></input>
+          <button
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300"
+            type="submit"
+          >
+            Book Appointment
+          </button>
+        </form>
+      </div>
   );
 }
 
