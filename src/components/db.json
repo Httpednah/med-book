@@ -1,0 +1,26 @@
+{
+  "appointments": [
+    {
+      "id": "1",
+      "fullName": "John Doe",
+      "email": "john.doe@example.com",
+      "age": 32,
+      "date": "2025-10-25"
+    },
+    {
+      "id": "2",
+      "fullName": "Mary Kimani",
+      "email": "mary.kimani@gmail.com",
+      "age": 27,
+      "date": "2025-11-01"
+    },
+   
+    {
+      "id": "c091",
+      "fullName": "lewis",
+      "email": "johiil.lewis@gmail",
+      "age": 43,
+      "date": "2025-09-28T00:00:00.000Z"
+    }
+  ]
+}
