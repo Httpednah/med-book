@@ -11,9 +11,9 @@ function App() {
     <>
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Available Doctors</h1>
-      <DoctorsList />
-    </div>
+      <DoctorList />
       <Toaster position="top-right" />
+      <BookAppointment/>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<DoctorList />} />
@@ -21,6 +21,8 @@ function App() {
           <Route path="/appointments" element={<AppointmentsList />} />
         </Route>
       </Routes>
+    </div>
+     
     </>
   );
 }
