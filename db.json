@@ -1,0 +1,14 @@
+{
+  "doctors": [
+    { "id": 1, "name": "Dr. Mary Kim", "specialty": "Pediatrics" },
+    { "id": 2, "name": "Dr. Ali Mwangi", "specialty": "Cardiology" }
+  ],
+  "appointments": [
+    {
+      "id": 1,
+      "patient": "Peter Emu",
+      "doctorId": 2,
+      "date": "2025-10-20T10:00:00"
+    }
+  ]
+}
