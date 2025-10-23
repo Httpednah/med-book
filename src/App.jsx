@@ -2,9 +2,12 @@
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import Layout from "./components/Layout";
-import DoctorList from "./components/DoctorList";
-import BookAppointment from "./components/BookAppointment";
+import DoctorsList from "./components/DoctorsList";
+import BookAppointmentForm from "./components/BookAppointmentForm";
 import AppointmentsList from "./components/AppointmentsList";
+
+
+
 
 function App() {
   return (
@@ -16,8 +19,8 @@ function App() {
       <BookAppointment/>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<DoctorList />} />
-          <Route path="/book" element={<BookAppointment />} />
+          <Route path="/" element={<DoctorsList />} />
+          <Route path="/book" element={<BookAppointmentForm />} />
           <Route path="/appointments" element={<AppointmentsList />} />
         </Route>
       </Routes>
