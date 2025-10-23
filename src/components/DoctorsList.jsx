@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import DoctorsCard from "./DoctorsCard";
 
 function DoctorsList() {
   const [doctors, setDoctors] = useState([]);
@@ -12,11 +11,31 @@ function DoctorsList() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50">
-      <div className="doctor-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 max-w-6xl">
-        {doctors.map((doctor) => (
-          <DoctorsCard key={doctor.id} doctor={doctor} />
-        ))}
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="bg-white shadow-md rounded-xl p-6 w-full max-w-4xl">
+        <h2 className="text-2xl font-semibold text-center text-blue-700 mb-6">
+          Doctors List
+        </h2>
+
+        <table className="w-full border-collapse">
+          <thead>
+            <tr className="bg-blue-600 text-white">
+              <th className="p-3 text-left">Doctor Name</th>
+              <th className="p-3 text-left">Speciality</th>
+            </tr>
+          </thead>
+          <tbody>
+            {doctors.map((doctor) => (
+              <tr
+                key={doctor.id}
+                className="border-b hover:bg-blue-50 transition-colors"
+              >
+                <td className="p-3 font-medium text-gray-800">{doctor.name}</td>
+                <td className="p-3 text-gray-600">{doctor.specialty}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
