@@ -12,8 +12,8 @@ function DoctorsList() {
   }, []);
 
   return (
-    <div>
-      <div className="doctor-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+    <div className="flex justify-center items-center min-h-screen bg-gray-50">
+      <div className="doctor-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 max-w-6xl">
         {doctors.map((doctor) => (
           <DoctorsCard key={doctor.id} doctor={doctor} />
         ))}
