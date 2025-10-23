@@ -1,4 +1,4 @@
-// src/App.jsx
+// src/App.jsx updates
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import Layout from "./components/Layout";
