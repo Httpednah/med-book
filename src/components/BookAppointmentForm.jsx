@@ -1,7 +1,4 @@
-
-// I NEED THE JSON FOR THIS COMPONENT...
-
-
+import { toast } from "react-toastify";
 import React from "react";
 import { useState } from "react";
 
@@ -10,19 +7,18 @@ function BookAppointmentForm() {
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
   const [date, setDate] = useState("");
- 
 
-
-const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     //logic for inputs validation
-    if (!fullName || !email || !age || !date) { //if there is no value of the inputs it will show an alert
-      alert("Please fill in all fields.");
+    if (!fullName || !email || !age || !date) {
+      //if there is no value of the inputs it will show an alert
+      toast.warning("Please fill in all fields.");
       return;
-    }  
+    }
 
-    const  newAppointment = {
+    const newAppointment = {
       fullName,
       email,
       age,
@@ -30,7 +26,7 @@ const handleSubmit = (e) => {
     };
 
     //Sending data to the server
-    fetch("json/link-goes here", {
+    fetch("http://localhost:3000/appointments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +41,7 @@ const handleSubmit = (e) => {
       })
       .then((data) => {
         console.log("Success:", data);
-        alert("Appointment booked successfully!");
+        toast.alert("Appointment booked successfully!");
 
         // Clear form fields
         setFullName("");
@@ -55,14 +51,14 @@ const handleSubmit = (e) => {
       })
       .catch((error) => {
         console.error("Error:", error);
-        alert("There was a problem booking your appointment. Please try again.");
+        toast.error(
+          "There was a problem booking your appointment. Please try again."
+        );
       });
- 
-
 
     // Handle form submission logic here
     console.log("Appointment booked for:", { fullName, email, age, date });
-  }
+  };
 
   const handleNameChange = (e) => {
     setFullName(e.target.value);
@@ -78,34 +74,45 @@ const handleSubmit = (e) => {
   };
 
   return (
-    <div>
-      <h2>Book Appointment Form</h2>
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg">
+      <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+        Book Appointment Form
+      </h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Full Name"
           value={fullName}
           onChange={handleNameChange}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         ></input>
         <input
           type="text"
           placeholder="email"
           value={email}
           onChange={handleEmailChange}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         ></input>
         <input
           type="number"
           placeholder="age"
           value={age}
           onChange={handleAgeChange}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         ></input>
         <input
-          type="number"
+          type="date"
           placeholder="dd/mm/yyy"
           value={date}
           onChange={handleDateChange}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         ></input>
-        <button type="submit">Book Appointment</button>
+        <button
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300"
+          type="submit"
+        >
+          Book Appointment
+        </button>
       </form>
     </div>
   );
