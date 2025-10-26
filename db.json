@@ -1,112 +1,476 @@
 {
-  "doctors": [
-    { "id": 1, "name": "Dr. Mary Kim", "specialty": "Pediatrics" },
-    { "id": 2, "name": "Dr. Ali Mwangi", "specialty": "Cardiology" },
-    { "id": 3, "name": "Dr. James Otieno", "specialty": "Dermatology" },
-    { "id": 4, "name": "Dr. Amina Hassan", "specialty": "Neurology" },
-    { "id": 5, "name": "Dr. Brian Mutua", "specialty": "Orthopedics" },
-    { "id": 6, "name": "Dr. Grace Njeri", "specialty": "Endocrinology" },
-    { "id": 7, "name": "Dr. Samuel Ochieng", "specialty": "Psychiatry" },
-    { "id": 8, "name": "Dr. Fatima Yusuf", "specialty": "Gastroenterology" },
-    { "id": 9, "name": "Dr. Kevin Mwanzia", "specialty": "Ophthalmology" },
-    { "id": 10, "name": "Dr. Susan Kariuki", "specialty": "ENT" },
-    { "id": 11, "name": "Dr. Peter Karanja", "specialty": "Rheumatology" },
-    { "id": 12, "name": "Dr. Jane Wambui", "specialty": "Oncology" },
-    { "id": 13, "name": "Dr. David Okello", "specialty": "Urology" },
-    { "id": 14, "name": "Dr. Alice Mburu", "specialty": "Nephrology" },
-    { "id": 15, "name": "Dr. Tom Odhiambo", "specialty": "Pulmonology" }
-  ],
-  "appointments": [
+  "users": [
     {
       "id": 1,
-      "patient": "Peter Emu",
-      "doctorId": 2,
-      "date": "2025-10-20T10:00:00"
+      "fullname": "System Administrator",
+      "username": "AdminUser",
+      "email": "admin@medbook.com",
+      "age": 45,
+      "roleId": 1
     },
     {
       "id": 2,
-      "patient": "Lilian Njeri",
-      "doctorId": 1,
-      "date": "2025-10-21T09:30:00"
+      "fullname": "Jane Doe Patient",
+      "username": "PatientJane",
+      "email": "jane@example.com",
+      "age": 32,
+      "roleId": 2
     },
     {
       "id": 3,
-      "patient": "James Mwangi",
-      "doctorId": 3,
-      "date": "2025-10-22T14:00:00"
+      "fullname": "Dr. Michael Chen",
+      "username": "DoctorMike",
+      "email": "mike@clinic.com",
+      "age": 55,
+      "roleId": 3
     },
     {
       "id": 4,
-      "patient": "Faith Kimani",
-      "doctorId": 4,
-      "date": "2025-10-23T11:00:00"
+      "fullname": "Chris Evans Patient",
+      "username": "PatientChris",
+      "email": "chris@example.com",
+      "age": 28,
+      "roleId": 2
     },
     {
       "id": 5,
-      "patient": "Daniel Oduor",
-      "doctorId": 5,
-      "date": "2025-10-24T13:30:00"
+      "fullname": "Dr. Olivia Lee",
+      "username": "DoctorLee",
+      "email": "olivia@clinic.com",
+      "age": 42,
+      "roleId": 3
     },
     {
       "id": 6,
-      "patient": "Sophia Wanjiru",
+      "fullname": "Dr. Anil Patel",
+      "username": "DoctorPatel",
+      "email": "anil@clinic.com",
+      "age": 60,
+      "roleId": 3
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "name": "admin",
+      "description": "Full application access for system configuration and user management.",
+      "permissions": ["read_all", "write_all", "delete_all"]
+    },
+    {
+      "id": 2,
+      "name": "patient",
+      "description": "Access to personal records and appointment scheduling.",
+      "permissions": ["read_own_records", "schedule_appointment"]
+    },
+    {
+      "id": 3,
+      "name": "doctor",
+      "description": "Access to patient records and appointment management.",
+      "permissions": [
+        "read_patient_records",
+        "update_records",
+        "manage_appointments"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "id": 101,
+      "userId": 2,
+      "doctorId": 3,
+      "patient_fullname": "Jane Doe Patient",
+      "email": "jane@example.com",
+      "title": "Annual Checkup Summary 2024",
+      "date": "2024-10-20",
+      "conditions": ["Minor seasonal allergies (pollen)", "Mild fatigue"],
+      "doctor": "Dr. Michael Chen",
+      "doctor_speciality": "General Practitioner",
+      "notes": "Patient advised on over-the-counter antihistamines."
+    },
+    {
+      "id": 102,
+      "userId": 2,
+      "doctorId": 3,
+      "patient_fullname": "Jane Doe Patient",
+      "email": "jane@example.com",
+      "title": "Vaccination Record",
+      "date": "2024-03-15",
+      "conditions": ["Flu shot administered (H3N2)"],
+      "doctor": "Dr. Michael Chen",
+      "doctor_speciality": "Immunology",
+      "notes": "No immediate side effects observed."
+    },
+    {
+      "id": 103,
+      "userId": 4,
+      "doctorId": 5,
+      "patient_fullname": "Chris Evans Patient",
+      "email": "chris@example.com",
+      "title": "Initial Consultation - Persistent Cough",
+      "date": "2024-11-01",
+      "conditions": ["Acute Bronchitis"],
+      "doctor": "Dr. Olivia Lee",
+      "doctor_speciality": "Pulmonology",
+      "notes": "Prescribed Azithromycin for 5 days. Follow-up in one week."
+    },
+    {
+      "id": 104,
+      "userId": 2,
+      "doctorId": 5,
+      "patient_fullname": "Jane Doe Patient",
+      "email": "jane@example.com",
+      "title": "Dermatology Follow-up",
+      "date": "2024-09-10",
+      "conditions": ["Eczema flare-up"],
+      "doctor": "Dr. Olivia Lee",
+      "doctor_speciality": "Dermatology",
+      "notes": "Topical steroid cream renewed."
+    },
+    {
+      "id": 105,
+      "userId": 4,
       "doctorId": 6,
-      "date": "2025-10-25T15:00:00"
+      "patient_fullname": "Chris Evans Patient",
+      "email": "chris@example.com",
+      "title": "Emergency Visit - Fracture",
+      "date": "2024-07-25",
+      "conditions": ["Distal radius fracture", "Moderate pain"],
+      "doctor": "Dr. Anil Patel",
+      "doctor_speciality": "Orthopedics",
+      "notes": "Cast applied. Scheduled for removal in 6 weeks."
     },
     {
-      "id": 7,
-      "patient": "Michael Otieno",
-      "doctorId": 7,
-      "date": "2025-10-26T10:30:00"
+      "id": 106,
+      "userId": 2,
+      "doctorId": 3,
+      "patient_fullname": "Jane Doe Patient",
+      "email": "jane@example.com",
+      "title": "Physical Therapy Session 1",
+      "date": "2024-06-05",
+      "conditions": ["Chronic lower back pain"],
+      "doctor": "Dr. Michael Chen",
+      "doctor_speciality": "Physiotherapy",
+      "notes": "Introduced foundational stabilization exercises."
     },
     {
-      "id": 8,
-      "patient": "Grace Mutheu",
-      "doctorId": 8,
-      "date": "2025-10-27T09:00:00"
-    },
-    
-    {
-      "id": 9,
-      "patient": "Kevin Ouma",
-      "doctorId": 9,
-      "date": "2025-10-28T16:00:00"
-    },
-    {
-      "id": 10,
-      "patient": "Susan Wairimu",
-      "doctorId": 10,
-      "date": "2025-10-29T12:30:00"
+      "id": 107,
+      "userId": 4,
+      "doctorId": 3,
+      "patient_fullname": "Chris Evans Patient",
+      "email": "chris@example.com",
+      "title": "Blood Test Results Review",
+      "date": "2024-05-18",
+      "conditions": ["Slightly elevated cholesterol"],
+      "doctor": "Dr. Michael Chen",
+      "doctor_speciality": "General Practitioner",
+      "notes": "Dietary changes recommended. Recheck in 3 months."
     },
     {
-      "id": 11,
-      "patient": "Alice Naliaka",
-      "doctorId": 11,
-      "date": "2025-10-30T11:15:00"
+      "id": 108,
+      "userId": 2,
+      "doctorId": 5,
+      "patient_fullname": "Jane Doe Patient",
+      "email": "jane@example.com",
+      "title": "Routine Dental Cleaning",
+      "date": "2024-04-01",
+      "conditions": ["Mild gingivitis"],
+      "doctor": "Dr. Olivia Lee",
+      "doctor_speciality": "Dentistry",
+      "notes": "Patient advised on flossing technique."
     },
     {
-      "id": 12,
-      "patient": "Peter Nyaga",
-      "doctorId": 12,
-      "date": "2025-10-31T14:45:00"
+      "id": 109,
+      "userId": 4,
+      "doctorId": 6,
+      "patient_fullname": "Chris Evans Patient",
+      "email": "chris@example.com",
+      "title": "Follow-up Orthopedics (Cast Removal)",
+      "date": "2024-09-08",
+      "conditions": ["Healing complete"],
+      "doctor": "Dr. Anil Patel",
+      "doctor_speciality": "Orthopedics",
+      "notes": "Cast removed. Prescribed light physical therapy."
     },
     {
-      "id": 13,
-      "patient": "Mary Wanjiku",
-      "doctorId": 13,
-      "date": "2025-11-01T09:00:00"
+      "id": 110,
+      "userId": 2,
+      "doctorId": 3,
+      "patient_fullname": "Jane Doe Patient",
+      "email": "jane@example.com",
+      "title": "Eye Examination",
+      "date": "2024-11-15",
+      "conditions": ["Myopia, stable"],
+      "doctor": "Dr. Michael Chen",
+      "doctor_speciality": "Ophthalmology",
+      "notes": "New contact lens prescription issued."
     },
     {
-      "id": 14,
-      "patient": "James Kariuki",
-      "doctorId": 14,
-      "date": "2025-11-02T15:30:00"
+      "id": 111,
+      "userId": 4,
+      "doctorId": 5,
+      "patient_fullname": "Chris Evans Patient",
+      "email": "chris@example.com",
+      "title": "Allergy Testing Results",
+      "date": "2024-10-10",
+      "conditions": ["Allergic to peanuts", "Allergic to mold"],
+      "doctor": "Dr. Olivia Lee",
+      "doctor_speciality": "Allergology",
+      "notes": "Prescribed epinephrine auto-injector."
     },
     {
-      "id": 15,
-      "patient": "Lucy Achieng",
-      "doctorId": 15,
-      "date": "2025-11-03T10:00:00"
+      "id": 112,
+      "userId": 2,
+      "doctorId": 3,
+      "patient_fullname": "Jane Doe Patient",
+      "email": "jane@example.com",
+      "title": "Flu-like Symptoms",
+      "date": "2025-01-05",
+      "conditions": ["Influenza A", "High fever"],
+      "doctor": "Dr. Michael Chen",
+      "doctor_speciality": "General Practitioner",
+      "notes": "Rest and hydration recommended. Given Tamiflu prescription."
+    },
+    {
+      "id": 113,
+      "userId": 4,
+      "doctorId": 5,
+      "patient_fullname": "Chris Evans Patient",
+      "email": "chris@example.com",
+      "title": "Migraine Evaluation",
+      "date": "2024-12-01",
+      "conditions": ["Chronic migraine without aura"],
+      "doctor": "Dr. Olivia Lee",
+      "doctor_speciality": "Neurology",
+      "notes": "Started preventative medication trial."
+    },
+    {
+      "id": 114,
+      "userId": 2,
+      "doctorId": 3,
+      "patient_fullname": "Jane Doe Patient",
+      "email": "jane@example.com",
+      "title": "Cardiology Stress Test",
+      "date": "2024-08-20",
+      "conditions": ["Exercise tolerance normal"],
+      "doctor": "Dr. Michael Chen",
+      "doctor_speciality": "Cardiology",
+      "notes": "Heart function appears healthy."
+    },
+    {
+      "id": 115,
+      "userId": 4,
+      "doctorId": 5,
+      "patient_fullname": "Chris Evans Patient",
+      "email": "chris@example.com",
+      "title": "Nutrition Consultation",
+      "date": "2025-01-18",
+      "conditions": ["Goal: Weight management"],
+      "doctor": "Dr. Olivia Lee",
+      "doctor_speciality": "Dietetics",
+      "notes": "Meal plan targeting calorie deficit provided."
+    },
+    {
+      "id": 116,
+      "userId": 2,
+      "doctorId": 3,
+      "patient_fullname": "Jane Doe Patient",
+      "email": "jane@example.com",
+      "title": "Ultrasound Results (Abdomen)",
+      "date": "2024-11-29",
+      "conditions": ["Mild gallstones detected"],
+      "doctor": "Dr. Michael Chen",
+      "doctor_speciality": "Gastroenterology",
+      "notes": "Monitoring approach recommended. Diet review scheduled."
+    },
+    {
+      "id": 117,
+      "userId": 4,
+      "doctorId": 5,
+      "patient_fullname": "Chris Evans Patient",
+      "email": "chris@example.com",
+      "title": "Annual Mental Health Screening",
+      "date": "2024-03-05",
+      "conditions": ["Low mood reported"],
+      "doctor": "Dr. Olivia Lee",
+      "doctor_speciality": "Psychiatry",
+      "notes": "Referred for CBT counseling."
+    },
+    {
+      "id": 118,
+      "userId": 2,
+      "doctorId": 3,
+      "patient_fullname": "Jane Doe Patient",
+      "email": "jane@example.com",
+      "title": "Prescription Refill",
+      "date": "2025-02-10",
+      "conditions": ["Continuation of allergy medication"],
+      "doctor": "Dr. Michael Chen",
+      "doctor_speciality": "General Practitioner",
+      "notes": "90-day supply approved."
+    },
+    {
+      "id": 119,
+      "userId": 4,
+      "doctorId": 6,
+      "patient_fullname": "Chris Evans Patient",
+      "email": "chris@example.com",
+      "title": "Sports Injury Check",
+      "date": "2025-02-20",
+      "conditions": ["Hamstring strain (Grade 1)"],
+      "doctor": "Dr. Anil Patel",
+      "doctor_speciality": "Sports Medicine",
+      "notes": "RICE protocol initiated. Follow-up PT required."
+    },
+    {
+      "id": 120,
+      "userId": 2,
+      "doctorId": 5,
+      "patient_fullname": "Jane Doe Patient",
+      "email": "jane@example.com",
+      "title": "Follow-up: Migraine Medication",
+      "date": "2025-03-01",
+      "conditions": ["Migraine frequency reduced by 50%"],
+      "doctor": "Dr. Olivia Lee",
+      "doctor_speciality": "Neurology",
+      "notes": "Continue current dosage of preventative medication."
+    },
+    {
+      "id": 121,
+      "userId": 4,
+      "doctorId": 3,
+      "patient_fullname": "Chris Evans Patient",
+      "email": "chris@example.com",
+      "title": "Hearing Test",
+      "date": "2024-01-22",
+      "conditions": ["Normal hearing range detected"],
+      "doctor": "Dr. Michael Chen",
+      "doctor_speciality": "Otolaryngology (ENT)",
+      "notes": "Routine screening successful."
+    },
+    {
+      "id": 122,
+      "userId": 2,
+      "doctorId": 5,
+      "patient_fullname": "Jane Doe Patient",
+      "email": "jane@example.com",
+      "title": "Gynecological Checkup",
+      "date": "2024-02-14",
+      "conditions": ["Routine checkup"],
+      "doctor": "Dr. Olivia Lee",
+      "doctor_speciality": "Gynecology",
+      "notes": "Annual exam completed; results normal."
+    },
+    {
+      "id": 123,
+      "userId": 4,
+      "doctorId": 5,
+      "patient_fullname": "Chris Evans Patient",
+      "email": "chris@example.com",
+      "title": "X-ray Review (Chest)",
+      "date": "2024-03-20",
+      "conditions": ["No signs of active disease"],
+      "doctor": "Dr. Olivia Lee",
+      "doctor_speciality": "Pulmonology",
+      "notes": "Clear chest image. Symptoms resolved."
+    },
+    {
+      "id": 124,
+      "userId": 2,
+      "doctorId": 3,
+      "patient_fullname": "Jane Doe Patient",
+      "email": "jane@example.com",
+      "title": "Psychology Session 5",
+      "date": "2025-03-10",
+      "conditions": ["Anxiety management"],
+      "doctor": "Dr. Michael Chen",
+      "doctor_speciality": "Psychology",
+      "notes": "Patient reports coping skills improving."
+    },
+    {
+      "id": 125,
+      "userId": 4,
+      "doctorId": 3,
+      "patient_fullname": "Chris Evans Patient",
+      "email": "chris@example.com",
+      "title": "Minor Cut Laceration",
+      "date": "2024-11-25",
+      "conditions": ["Minor laceration, hand"],
+      "doctor": "Dr. Michael Chen",
+      "doctor_speciality": "General Practitioner",
+      "notes": "Cleaned and bandaged. No sutures required."
+    },
+    {
+      "id": 126,
+      "userId": 2,
+      "doctorId": 6,
+      "patient_fullname": "Jane Doe Patient",
+      "email": "jane@example.com",
+      "title": "Biopsy Results",
+      "date": "2024-12-15",
+      "conditions": ["Benign mass (lipoma)"],
+      "doctor": "Dr. Anil Patel",
+      "doctor_speciality": "Oncology",
+      "notes": "No further intervention necessary."
+    },
+    {
+      "id": 127,
+      "userId": 4,
+      "doctorId": 3,
+      "patient_fullname": "Chris Evans Patient",
+      "email": "chris@example.com",
+      "title": "Gastroenterology Consultation",
+      "date": "2024-08-01",
+      "conditions": ["Irritable Bowel Syndrome (IBS)"],
+      "doctor": "Dr. Michael Chen",
+      "doctor_speciality": "Gastroenterology",
+      "notes": "Low-FODMAP diet trial started."
+    },
+    {
+      "id": 128,
+      "userId": 2,
+      "doctorId": 3,
+      "patient_fullname": "Jane Doe Patient",
+      "email": "jane@example.com",
+      "title": "Routine Blood Pressure Check",
+      "date": "2025-01-20",
+      "conditions": ["Blood pressure 120/80 (Normal)"],
+      "doctor": "Dr. Michael Chen",
+      "doctor_speciality": "General Practitioner",
+      "notes": "Healthy lifestyle reinforced."
+    }
+  ],
+  "appointments": [
+    {
+      "id": 501,
+      "patientId": 2,
+      "doctorId": 3,
+      "date": "2025-01-15T10:00:00Z",
+      "status": "scheduled",
+      "reason": "Follow-up on allergy medication."
+    },
+    {
+      "id": 502,
+      "patientId": 4,
+      "doctorId": 5,
+      "date": "2025-04-10T14:30:00Z",
+      "status": "scheduled",
+      "reason": "Neurology follow-up for migraines."
+    },
+    {
+      "id": 503,
+      "patientId": 2,
+      "doctorId": 6,
+      "date": "2025-04-15T09:00:00Z",
+      "status": "scheduled",
+      "reason": "Orthopedic check on chronic knee pain."
+    },
+    {
+      "id": 504,
+      "patientId": 4,
+      "doctorId": 3,
+      "date": "2025-05-01T11:00:00Z",
+      "status": "scheduled",
+      "reason": "Annual physical examination."
     }
   ]
 }
