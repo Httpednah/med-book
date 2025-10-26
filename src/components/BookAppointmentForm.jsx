@@ -7,12 +7,13 @@ function BookAppointmentForm() {
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
   const [date, setDate] = useState("");
+  const [doctor,setDoctor] =useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     //logic for inputs validation
-    if (!fullName || !email || !age || !date) {
+    if (!fullName || !email || !age || !date || !doctor) {
       //if there is no value of the inputs it will show an alert
       toast.warning("Please fill in all fields.");
       return;
@@ -23,6 +24,7 @@ function BookAppointmentForm() {
       email,
       age,
       date,
+      doctor,
     };
 
     //Sending data to the server
@@ -41,13 +43,14 @@ function BookAppointmentForm() {
       })
       .then((data) => {
         console.log("Success:", data);
-        toast.alert("Appointment booked successfully!");
+        toast.success("Appointment booked successfully!");
 
         // Clear form fields
         setFullName("");
         setEmail("");
         setAge("");
         setDate("");
+        setDoctor("");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -57,7 +60,7 @@ function BookAppointmentForm() {
       });
 
     // Handle form submission logic here
-    console.log("Appointment booked for:", { fullName, email, age, date });
+    console.log("Appointment booked for:", { fullName, email, age, date,doctor });
   };
 
   const handleNameChange = (e) => {
@@ -72,6 +75,9 @@ function BookAppointmentForm() {
   const handleDateChange = (e) => {
     setDate(e.target.valueAsDate);
   };
+  const handleDoctorChange = (e) =>{
+    setDoctor(e.target.value)
+  }
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg">
@@ -100,9 +106,16 @@ function BookAppointmentForm() {
           onChange={handleAgeChange}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         ></input>
+          <input
+            type="text"
+            placeholder="doctors specialty e.g dentist"
+            value={doctor}
+            onChange={handleDoctorChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          ></input>
         <input
           type="date"
-          placeholder="dd/mm/yyy"
+          placeholder="dd/mm/yyyy"
           value={date}
           onChange={handleDateChange}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
