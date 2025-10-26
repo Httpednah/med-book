@@ -1,20 +1,80 @@
 {
   "doctors": [
-    { "id": 1, "name": "Dr. Mary Kim", "specialty": "Pediatrics" },
-    { "id": 2, "name": "Dr. Ali Mwangi", "specialty": "Cardiology" },
-    { "id": 3, "name": "Dr. James Otieno", "specialty": "Dermatology" },
-    { "id": 4, "name": "Dr. Amina Hassan", "specialty": "Neurology" },
-    { "id": 5, "name": "Dr. Brian Mutua", "specialty": "Orthopedics" },
-    { "id": 6, "name": "Dr. Grace Njeri", "specialty": "Endocrinology" },
-    { "id": 7, "name": "Dr. Samuel Ochieng", "specialty": "Psychiatry" },
-    { "id": 8, "name": "Dr. Fatima Yusuf", "specialty": "Gastroenterology" },
-    { "id": 9, "name": "Dr. Kevin Mwanzia", "specialty": "Ophthalmology" },
-    { "id": 10, "name": "Dr. Susan Kariuki", "specialty": "ENT" },
-    { "id": 11, "name": "Dr. Peter Karanja", "specialty": "Rheumatology" },
-    { "id": 12, "name": "Dr. Jane Wambui", "specialty": "Oncology" },
-    { "id": 13, "name": "Dr. David Okello", "specialty": "Urology" },
-    { "id": 14, "name": "Dr. Alice Mburu", "specialty": "Nephrology" },
-    { "id": 15, "name": "Dr. Tom Odhiambo", "specialty": "Pulmonology" }
+    {
+      "id": 1,
+      "name": "Dr. Mary Kim",
+      "specialty": "Pediatrics"
+    },
+    {
+      "id": 2,
+      "name": "Dr. Ali Mwangi",
+      "specialty": "Cardiology"
+    },
+    {
+      "id": 3,
+      "name": "Dr. James Otieno",
+      "specialty": "Dermatology"
+    },
+    {
+      "id": 4,
+      "name": "Dr. Amina Hassan",
+      "specialty": "Neurology"
+    },
+    {
+      "id": 5,
+      "name": "Dr. Brian Mutua",
+      "specialty": "Orthopedics"
+    },
+    {
+      "id": 6,
+      "name": "Dr. Grace Njeri",
+      "specialty": "Endocrinology"
+    },
+    {
+      "id": 7,
+      "name": "Dr. Samuel Ochieng",
+      "specialty": "Psychiatry"
+    },
+    {
+      "id": 8,
+      "name": "Dr. Fatima Yusuf",
+      "specialty": "Gastroenterology"
+    },
+    {
+      "id": 9,
+      "name": "Dr. Kevin Mwanzia",
+      "specialty": "Ophthalmology"
+    },
+    {
+      "id": 10,
+      "name": "Dr. Susan Kariuki",
+      "specialty": "ENT"
+    },
+    {
+      "id": 11,
+      "name": "Dr. Peter Karanja",
+      "specialty": "Rheumatology"
+    },
+    {
+      "id": 12,
+      "name": "Dr. Jane Wambui",
+      "specialty": "Oncology"
+    },
+    {
+      "id": 13,
+      "name": "Dr. David Okello",
+      "specialty": "Urology"
+    },
+    {
+      "id": 14,
+      "name": "Dr. Alice Mburu",
+      "specialty": "Nephrology"
+    },
+    {
+      "id": 15,
+      "name": "Dr. Tom Odhiambo",
+      "specialty": "Pulmonology"
+    }
   ],
   "appointments": [
     {
@@ -106,6 +166,90 @@
       "patient": "Lucy Achieng",
       "doctorId": 15,
       "date": "2025-11-03T10:00:00"
+    },
+    {
+      "fullName": "ian kimani",
+      "email": "emu.kimani @gmail.com",
+      "age": 100,
+      "date": "2025-10-01T00:00:00.000Z",
+      "id": 16
+    },
+    {
+      "fullName": "ian kimani",
+      "email": "emu.kimani @gmail.com",
+      "age": 100,
+      "date": "2025-10-01T00:00:00.000Z",
+      "id": 17
+    },
+    {
+      "fullName": "ian kimani",
+      "email": "emu.kimani @gmail.com",
+      "age": 100,
+      "date": "2025-10-01T00:00:00.000Z",
+      "id": 18
+    },
+    {
+      "fullName": "ednah kkk",
+      "email": "huhu@gmail.com",
+      "age": 99,
+      "date": "2025-10-23T00:00:00.000Z",
+      "id": 19
+    },
+    {
+      "fullName": "ednah kkk",
+      "email": "huhu@gmail.com",
+      "age": 99,
+      "date": "2025-10-23T00:00:00.000Z",
+      "id": 20
+    },
+    {
+      "fullName": "ednah kkk",
+      "email": "huhu@gmail.com",
+      "age": 99,
+      "date": "2025-10-23T00:00:00.000Z",
+      "id": 21
+    },
+    {
+      "fullName": "ednah kkk",
+      "email": "huhu@gmail.com",
+      "age": 99,
+      "date": "2025-10-23T00:00:00.000Z",
+      "id": 22
+    },
+    {
+      "fullName": "ednah kkk",
+      "email": "huhu@gmail.com",
+      "age": 99,
+      "date": "2025-10-23T00:00:00.000Z",
+      "id": 23
+    },
+    {
+      "fullName": "ednah kkk",
+      "email": "huhu@gmail.com",
+      "age": 99,
+      "date": "2025-10-23T00:00:00.000Z",
+      "id": 24
+    },
+    {
+      "fullName": "ednah kkk",
+      "email": "huhu@gmail.com",
+      "age": 99,
+      "date": "2025-10-23T00:00:00.000Z",
+      "id": 25
+    },
+    {
+      "fullName": "ednah kkk",
+      "email": "huhu@gmail.com",
+      "age": 99,
+      "date": "2025-10-23T00:00:00.000Z",
+      "id": 26
+    },
+    {
+      "fullName": "ednah kkk",
+      "email": "huhu@gmail.com",
+      "age": 99,
+      "date": "2025-10-23T00:00:00.000Z",
+      "id": 27
     }
   ]
 }
