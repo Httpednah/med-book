@@ -1,111 +1,93 @@
 {
-  "doctors": [
-    { "id": 1, "name": "Dr. Mary Kim", "specialty": "Pediatrics" },
-    { "id": 2, "name": "Dr. Ali Mwangi", "specialty": "Cardiology" },
-    { "id": 3, "name": "Dr. James Otieno", "specialty": "Dermatology" },
-    { "id": 4, "name": "Dr. Amina Hassan", "specialty": "Neurology" },
-    { "id": 5, "name": "Dr. Brian Mutua", "specialty": "Orthopedics" },
-    { "id": 6, "name": "Dr. Grace Njeri", "specialty": "Endocrinology" },
-    { "id": 7, "name": "Dr. Samuel Ochieng", "specialty": "Psychiatry" },
-    { "id": 8, "name": "Dr. Fatima Yusuf", "specialty": "Gastroenterology" },
-    { "id": 9, "name": "Dr. Kevin Mwanzia", "specialty": "Ophthalmology" },
-    { "id": 10, "name": "Dr. Susan Kariuki", "specialty": "ENT" },
-    { "id": 11, "name": "Dr. Peter Karanja", "specialty": "Rheumatology" },
-    { "id": 12, "name": "Dr. Jane Wambui", "specialty": "Oncology" },
-    { "id": 13, "name": "Dr. David Okello", "specialty": "Urology" },
-    { "id": 14, "name": "Dr. Alice Mburu", "specialty": "Nephrology" },
-    { "id": 15, "name": "Dr. Tom Odhiambo", "specialty": "Pulmonology" }
-  ],
-  "appointments": [
+  "users": [
     {
       "id": 1,
-      "patient": "Peter Emu",
-      "doctorId": 2,
-      "date": "2025-10-20T10:00:00"
+      "fullname": "System Administrator",
+      "username": "AdminUser",
+      "email": "admin@medbook.com",
+      "password": "hashed_password_1",
+      "age": 45,
+      "roleId": 1
     },
     {
       "id": 2,
-      "patient": "Lilian Njeri",
-      "doctorId": 1,
-      "date": "2025-10-21T09:30:00"
+      "fullname": "Jane Doe Patient",
+      "username": "PatientJane",
+      "email": "jane@example.com",
+      "password": "hashed_password_2",
+      "age": 32,
+      "roleId": 2
     },
     {
       "id": 3,
-      "patient": "James Mwangi",
+      "fullname": "Dr. Michael Chen",
+      "username": "DoctorMike",
+      "email": "mike@clinic.com",
+      "password": "hashed_password_3",
+      "age": 55,
+      "roleId": 3
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "name": "admin",
+      "description": "Full application access for system configuration and user management.",
+      "permissions": ["read_all", "write_all", "delete_all"]
+    },
+    {
+      "id": 2,
+      "name": "patient",
+      "description": "Access to personal records and appointment scheduling.",
+      "permissions": ["read_own_records", "schedule_appointment"]
+    },
+    {
+      "id": 3,
+      "name": "doctor",
+      "description": "Access to patient records and appointment management.",
+      "permissions": [
+        "read_patient_records",
+        "update_records",
+        "manage_appointments"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "id": 101,
+      "userId": 2,
+      "patient_fullname": "Jane Doe Patient",
+      "patient_email": "jane@example.com",
+      "patient_age": 32,
+      "title": "Annual Checkup Summary 2024",
+      "record_date": "2024-10-20",
+      "conditions": ["Minor seasonal allergies (pollen)", "Mild fatigue"],
+      "doctor": "Dr. Smith",
+      "doctor_speciality": "General Practitioner",
+      "notes": "Patient advised on over-the-counter antihistamines."
+    },
+    {
+      "id": 102,
+      "userId": 2,
+      "patient_fullname": "Jane Doe Patient",
+      "patient_email": "jane@example.com",
+      "patient_age": 32,
+      "title": "Vaccination Record",
+      "record_date": "2024-03-15",
+      "conditions": ["Flu shot administered (H3N2)"],
+      "doctor": "Dr. Chen",
+      "doctor_speciality": "Immunology",
+      "notes": "No immediate side effects observed."
+    }
+  ],
+  "appointments": [
+    {
+      "id": 501,
+      "patientId": 2,
       "doctorId": 3,
-      "date": "2025-10-22T14:00:00"
-    },
-    {
-      "id": 4,
-      "patient": "Faith Kimani",
-      "doctorId": 4,
-      "date": "2025-10-23T11:00:00"
-    },
-    {
-      "id": 5,
-      "patient": "Daniel Oduor",
-      "doctorId": 5,
-      "date": "2025-10-24T13:30:00"
-    },
-    {
-      "id": 6,
-      "patient": "Sophia Wanjiru",
-      "doctorId": 6,
-      "date": "2025-10-25T15:00:00"
-    },
-    {
-      "id": 7,
-      "patient": "Michael Otieno",
-      "doctorId": 7,
-      "date": "2025-10-26T10:30:00"
-    },
-    {
-      "id": 8,
-      "patient": "Grace Mutheu",
-      "doctorId": 8,
-      "date": "2025-10-27T09:00:00"
-    },
-    {
-      "id": 9,
-      "patient": "Kevin Ouma",
-      "doctorId": 9,
-      "date": "2025-10-28T16:00:00"
-    },
-    {
-      "id": 10,
-      "patient": "Susan Wairimu",
-      "doctorId": 10,
-      "date": "2025-10-29T12:30:00"
-    },
-    {
-      "id": 11,
-      "patient": "Alice Naliaka",
-      "doctorId": 11,
-      "date": "2025-10-30T11:15:00"
-    },
-    {
-      "id": 12,
-      "patient": "Peter Nyaga",
-      "doctorId": 12,
-      "date": "2025-10-31T14:45:00"
-    },
-    {
-      "id": 13,
-      "patient": "Mary Wanjiku",
-      "doctorId": 13,
-      "date": "2025-11-01T09:00:00"
-    },
-    {
-      "id": 14,
-      "patient": "James Kariuki",
-      "doctorId": 14,
-      "date": "2025-11-02T15:30:00"
-    },
-    {
-      "id": 15,
-      "patient": "Lucy Achieng",
-      "doctorId": 15,
-      "date": "2025-11-03T10:00:00"
+      "date": "2025-01-15T10:00:00Z",
+      "status": "scheduled",
+      "reason": "Follow-up on allergy medication."
     }
   ]
 }
