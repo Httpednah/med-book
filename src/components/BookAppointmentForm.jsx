@@ -1,39 +1,37 @@
-
-// I NEED THE JSON FOR THIS COMPONENT...
+import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-
-
-
-import React from "react";
-import { useState } from "react";
 
 function BookAppointmentForm() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
   const [date, setDate] = useState("");
- 
+  const [doctorId, setDoctorId] = useState("");
+  const [doctors, setDoctors] = useState([]);
 
+  useEffect(() => {
+    fetch("http://localhost:3000/doctors")
+      .then((r) => r.json())
+      .then((data) => setDoctors(data))
+      .catch((err) => console.error("Failed to load doctors:", err));
+  }, []);
 
-const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    //logic for inputs validation
-    if (!fullName || !email || !age || !date) { //if there is no value of the inputs it will show an alert
+    if (!fullName || !email || !age || !date || !doctorId) {
       toast.warning("Please fill in all fields.");
       return;
-    }  
+    }
 
-  
-
-    const  newAppointment = {
+    const newAppointment = {
       fullName,
       email,
       age,
       date,
+      doctorId: parseInt(doctorId),
     };
 
-    //Sending data to the server
     fetch("http://localhost:3000/appointments", {
       method: "POST",
       headers: {
@@ -42,20 +40,17 @@ const handleSubmit = (e) => {
       body: JSON.stringify(newAppointment),
     })
       .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
+        if (!response.ok) throw new Error("Network response was not ok");
         return response.json();
       })
       .then((data) => {
         console.log("Success:", data);
-        toast.alert("Appointment booked successfully!");
-
-        // Clear form fields
+        toast.success("Appointment booked successfully!");
         setFullName("");
         setEmail("");
         setAge("");
         setDate("");
+        setDoctorId("");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -63,24 +58,6 @@ const handleSubmit = (e) => {
           "There was a problem booking your appointment. Please try again."
         );
       });
- 
-
-
-    // Handle form submission logic here
-    console.log("Appointment booked for:", { fullName, email, age, date });
-  }
-
-  const handleNameChange = (e) => {
-    setFullName(e.target.value);
-  };
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-  const handleAgeChange = (e) => {
-    setAge(e.target.valueAsNumber);
-  };
-  const handleDateChange = (e) => {
-    setDate(e.target.valueAsDate);
   };
 
   return (
@@ -91,26 +68,33 @@ const handleSubmit = (e) => {
           type="text"
           placeholder="Full Name"
           value={fullName}
-          onChange={handleNameChange}
-        ></input>
+          onChange={(e) => setFullName(e.target.value)}
+        />
         <input
-          type="text"
-          placeholder="email"
+          type="email"
+          placeholder="Email"
           value={email}
-          onChange={handleEmailChange}
-        ></input>
+          onChange={(e) => setEmail(e.target.value)}
+        />
         <input
           type="number"
-          placeholder="age"
+          placeholder="Age"
           value={age}
-          onChange={handleAgeChange}
-        ></input>
+          onChange={(e) => setAge(e.target.value)}
+        />
         <input
           type="date"
-          placeholder="dd/mm/yyy"
           value={date}
-          onChange={handleDateChange}
-        ></input>
+          onChange={(e) => setDate(e.target.value)}
+        />
+        <select value={doctorId} onChange={(e) => setDoctorId(e.target.value)}>
+          <option value="">Select Doctor</option>
+          {doctors.map((doc) => (
+            <option key={doc.id} value={doc.id}>
+              {doc.name} — {doc.specialty}
+            </option>
+          ))}
+        </select>
         <button type="submit">Book Appointment</button>
       </form>
     </div>
