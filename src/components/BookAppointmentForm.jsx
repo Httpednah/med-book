@@ -16,6 +16,7 @@ function BookAppointmentForm() {
       .catch((err) => console.error("Failed to load doctors:", err));
   }, []);
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -23,7 +24,9 @@ function BookAppointmentForm() {
       toast.warning("Please fill in all fields.");
       return;
     }
+    }
 
+   
     const newAppointment = {
       fullName,
       email,
@@ -58,11 +61,14 @@ function BookAppointmentForm() {
           "There was a problem booking your appointment. Please try again."
         );
       });
-  };
-
+  
+ 
+ 
   return (
-    <div>
-      <h2>Book Appointment Form</h2>
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg">
+      <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+        Book Appointment Form
+      </h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
