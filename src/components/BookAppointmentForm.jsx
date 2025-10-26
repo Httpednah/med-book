@@ -1,33 +1,40 @@
+import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import React from "react";
-import { useState } from "react";
 
 function BookAppointmentForm() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
   const [date, setDate] = useState("");
-  const [doctor,setDoctor] =useState("")
+  const [doctorId, setDoctorId] = useState("");
+  const [doctors, setDoctors] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/doctors")
+      .then((r) => r.json())
+      .then((data) => setDoctors(data))
+      .catch((err) => console.error("Failed to load doctors:", err));
+  }, []);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    //logic for inputs validation
-    if (!fullName || !email || !age || !date || !doctor) {
-      //if there is no value of the inputs it will show an alert
+    if (!fullName || !email || !age || !date || !doctorId) {
       toast.warning("Please fill in all fields.");
       return;
     }
+    }
 
+   
     const newAppointment = {
       fullName,
       email,
       age,
       date,
-      doctor,
+      doctorId: parseInt(doctorId),
     };
 
-    //Sending data to the server
     fetch("http://localhost:3000/appointments", {
       method: "POST",
       headers: {
@@ -36,21 +43,17 @@ function BookAppointmentForm() {
       body: JSON.stringify(newAppointment),
     })
       .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
+        if (!response.ok) throw new Error("Network response was not ok");
         return response.json();
       })
       .then((data) => {
         console.log("Success:", data);
         toast.success("Appointment booked successfully!");
-
-        // Clear form fields
         setFullName("");
         setEmail("");
         setAge("");
         setDate("");
-        setDoctor("");
+        setDoctorId("");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -58,26 +61,8 @@ function BookAppointmentForm() {
           "There was a problem booking your appointment. Please try again."
         );
       });
-
-    // Handle form submission logic here
-    console.log("Appointment booked for:", { fullName, email, age, date,doctor });
-  };
-
-  const handleNameChange = (e) => {
-    setFullName(e.target.value);
-  };
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-  const handleAgeChange = (e) => {
-    setAge(e.target.valueAsNumber);
-  };
-  const handleDateChange = (e) => {
-    setDate(e.target.valueAsDate);
-  };
-  const handleDoctorChange = (e) =>{
-    setDoctor(e.target.value)
-  }
+  
+ 
  
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg">
@@ -89,43 +74,34 @@ function BookAppointmentForm() {
           type="text"
           placeholder="Full Name"
           value={fullName}
-          onChange={handleNameChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        ></input>
+          onChange={(e) => setFullName(e.target.value)}
+        />
         <input
-          type="text"
-          placeholder="email"
+          type="email"
+          placeholder="Email"
           value={email}
-          onChange={handleEmailChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        ></input>
+          onChange={(e) => setEmail(e.target.value)}
+        />
         <input
           type="number"
-          placeholder="age"
+          placeholder="Age"
           value={age}
-          onChange={handleAgeChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        ></input>
-          <input
-            type="text"
-            placeholder="doctors specialty e.g dentist"
-            value={doctor}
-            onChange={handleDoctorChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          ></input>
+          onChange={(e) => setAge(e.target.value)}
+        />
         <input
           type="date"
-          placeholder="dd/mm/yyyy"
           value={date}
-          onChange={handleDateChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        ></input>
-        <button
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300"
-          type="submit"
-        >
-          Book Appointment
-        </button>
+          onChange={(e) => setDate(e.target.value)}
+        />
+        <select value={doctorId} onChange={(e) => setDoctorId(e.target.value)}>
+          <option value="">Select Doctor</option>
+          {doctors.map((doc) => (
+            <option key={doc.id} value={doc.id}>
+              {doc.name} — {doc.specialty}
+            </option>
+          ))}
+        </select>
+        <button type="submit">Book Appointment</button>
       </form>
     </div>
   );
