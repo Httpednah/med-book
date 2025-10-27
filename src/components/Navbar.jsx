@@ -41,7 +41,7 @@ function Navbar() {
               isActive ? "underline font-semibold" : "hover:underline"
             }
           >
-            Doctors
+            Home
           </NavLink>
           <NavLink
             to="/book"
