@@ -19,6 +19,7 @@ function BookAppointmentForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    //  Validate fields first
     if (!fullName || !email || !age || !date || !doctorId) {
       toast.warning("Please fill in all fields.");
       return;
@@ -33,6 +34,7 @@ function BookAppointmentForm() {
       status: "scheduled",
     };
 
+    //  Make sure JSON server is running at http://localhost:3000
     fetch("http://localhost:3000/appointments", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
