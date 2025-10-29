@@ -36,7 +36,7 @@ function Navbar() {
               }`
             }
           >
-            Doctors
+            Home
           </NavLink>
           <NavLink
             to="/book"

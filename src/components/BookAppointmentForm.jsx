@@ -54,64 +54,103 @@ function BookAppointmentForm() {
       })
       .catch((error) => {
         console.error("Error:", error);
-        toast.error(
-          "There was a problem booking your appointment. Please try again."
-        );
+        toast.error("There was a problem booking your appointment.");
       });
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg">
-      <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-        Book Appointment Form
-      </h2>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          type="text"
-          placeholder="Full Name"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
-          className="border rounded-md p-2"
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="border rounded-md p-2"
-        />
-        <input
-          type="number"
-          placeholder="Age"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
-          className="border rounded-md p-2"
-        />
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          className="border rounded-md p-2"
-        />
-        <select
-          value={doctorId}
-          onChange={(e) => setDoctorId(e.target.value)}
-          className="border rounded-md p-2"
-        >
-          <option value="">Select Doctor</option>
-          {doctors.map((doc) => (
-            <option key={doc.id} value={doc.id}>
-              {doc.name} — {doc.specialty}
-            </option>
-          ))}
-        </select>
-        <button
-          type="submit"
-          className="bg-blue-600 text-white rounded-md p-2 hover:bg-blue-700"
-        >
+    <div className="flex items-center justify-center min-h-screen bg-gray-50">
+      <div className="w-full max-w-2xl bg-white border border-gray-200 rounded-2xl shadow-xl p-8">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
           Book Appointment
-        </button>
-      </form>
+        </h2>
+
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
+          <div className="col-span-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Full Name
+            </label>
+            <input
+              type="text"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Email
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+              placeholder="you@example.com"
+              required
+            />
+          </div>
+
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Age
+            </label>
+            <input
+              type="number"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+              placeholder="Age"
+              required
+            />
+          </div>
+
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Appointment Date
+            </label>
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Select Doctor
+            </label>
+            <select
+              value={doctorId}
+              onChange={(e) => setDoctorId(e.target.value)}
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+              required
+            >
+              <option value="">Choose...</option>
+              {doctors.map((doc) => (
+                <option key={doc.id} value={doc.id}>
+                  {doc.name} — {doc.specialty}
+                </option>
+              ))}
+            </select>
+          </div>
+          <button
+            type="submit"
+            className="w-full border-2 border-cyan-400 text-white font-medium py-3 rounded-lg bg-blue-600 hover:bg-cyan-500 hover:border-blue-600 transition-all duration-300"
+          >
+            Submit
+          </button>
+          <div className="col-span-2"></div>
+        </form>
+      </div>
     </div>
   );
 }
