@@ -1,9 +1,7 @@
-
-
 {
   "doctors": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Dr. Michael Chen",
       "specialty": "General Practitioner",
       "email": "mike@clinic.com",
@@ -11,7 +9,7 @@
       "roleId": 3
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Dr. Olivia Lee",
       "specialty": "Dermatologist",
       "email": "olivia@clinic.com",
@@ -19,7 +17,7 @@
       "roleId": 3
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Dr. Anil Patel",
       "specialty": "Orthopedic Surgeon",
       "email": "anil@clinic.com",
@@ -27,7 +25,7 @@
       "roleId": 3
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "Dr. Sophia Martinez",
       "specialty": "Pediatrician",
       "email": "sophia@clinic.com",
@@ -35,7 +33,7 @@
       "roleId": 3
     },
     {
-      "id": "5",
+      "id": 5,
       "name": "Dr. David Kim",
       "specialty": "Cardiologist",
       "email": "david@clinic.com",
@@ -43,7 +41,7 @@
       "roleId": 3
     },
     {
-      "id": "6",
+      "id": 6,
       "name": "Dr. Sarah Johnson",
       "specialty": "Neurologist",
       "email": "sarah@clinic.com",
@@ -51,7 +49,7 @@
       "roleId": 3
     },
     {
-      "id": "7",
+      "id": 7,
       "name": "Dr. Ahmed Hassan",
       "specialty": "Ophthalmologist",
       "email": "ahmed@clinic.com",
@@ -59,7 +57,7 @@
       "roleId": 3
     },
     {
-      "id": "8",
+      "id": 8,
       "name": "Dr. Emily Carter",
       "specialty": "Gynecologist",
       "email": "emily@clinic.com",
@@ -67,7 +65,7 @@
       "roleId": 3
     },
     {
-      "id": "9",
+      "id": 9,
       "name": "Dr. Robert Green",
       "specialty": "Psychiatrist",
       "email": "robert@clinic.com",
@@ -75,7 +73,7 @@
       "roleId": 3
     },
     {
-      "id": "10",
+      "id": 10,
       "name": "Dr. Hannah Wong",
       "specialty": "Dentist",
       "email": "hannah@clinic.com",
@@ -83,7 +81,7 @@
       "roleId": 3
     },
     {
-      "id": "11",
+      "id": 11,
       "name": "Dr. Peter Ochieng",
       "specialty": "Oncologist",
       "email": "peter@clinic.com",
@@ -91,7 +89,7 @@
       "roleId": 3
     },
     {
-      "id": "12",
+      "id": 12,
       "name": "Dr. Maria Gomez",
       "specialty": "ENT Specialist",
       "email": "maria@clinic.com",
@@ -99,7 +97,7 @@
       "roleId": 3
     },
     {
-      "id": "13",
+      "id": 13,
       "name": "Dr. William Brown",
       "specialty": "Radiologist",
       "email": "william@clinic.com",
@@ -107,7 +105,7 @@
       "roleId": 3
     },
     {
-      "id": "14",
+      "id": 14,
       "name": "Dr. Lucy Njoroge",
       "specialty": "Pathologist",
       "email": "lucy@clinic.com",
@@ -115,7 +113,7 @@
       "roleId": 3
     },
     {
-      "id": "15",
+      "id": 15,
       "name": "Dr. Kevin Wright",
       "specialty": "Urologist",
       "email": "kevin@clinic.com",
@@ -212,4 +210,3 @@
     }
   ]
 }
-
