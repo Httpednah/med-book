@@ -22,31 +22,40 @@ function AppointmentsList() {
   const getDoctor = (id) => doctors.find((doc) => doc.id === id);
 
   return (
-    <div className="appointment-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 max-w-6xl mx-auto mt-8">
-      {appointments.map((appt) => {
-        const doctor = getDoctor(appt.doctorId);
-        const formattedDate = new Date(appt.date).toLocaleString();
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-950 to-cyan-900 py-12 px-6 text-white">
+      <h1 className="text-4xl font-extrabold text-center text-cyan-400 mb-10 tracking-tight">
+        🩺 Appointments Dashboard
+      </h1>
 
-        return (
-          <div
-            key={appt.id}
-            className="border border-gray-300 rounded-xl shadow-md p-4 bg-white text-center"
-          >
-            <h2 className="text-xl font-semibold mb-2">{appt.patient}</h2>
-            <p className="text-gray-600 mb-1">
-              Appointment Date: {formattedDate}
-            </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {appointments.map((appt) => {
+          const doctor = getDoctor(appt.doctorId);
+          const formattedDate = new Date(appt.date).toLocaleString();
 
-            {doctor ? (
-              <div className="mt-4 border-t pt-3">
-                <DoctorsCard doctor={doctor} />
-              </div>
-            ) : (
-              <p className="text-red-500 mt-2">Doctor not found</p>
-            )}
-          </div>
-        );
-      })}
+          return (
+            <div
+              key={appt.id}
+              className="border border-cyan-500/30 rounded-2xl shadow-md hover:shadow-cyan-500/30 p-5 bg-gray-800/60 backdrop-blur-sm text-center transition-all duration-300 hover:scale-105"
+            >
+              <h2 className="text-xl font-semibold text-cyan-300 mb-2">
+                {appt.patient}
+              </h2>
+              <p className="text-gray-300 mb-2">
+                Appointment Date:{" "}
+                <span className="text-cyan-400">{formattedDate}</span>
+              </p>
+
+              {doctor ? (
+                <div className="mt-4 border-t border-cyan-600/40 pt-3">
+                  <DoctorsCard doctor={doctor} />
+                </div>
+              ) : (
+                <p className="text-red-400 mt-2">Doctor not found</p>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
