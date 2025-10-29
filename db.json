@@ -1,7 +1,7 @@
 {
   "doctors": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Dr. Michael Chen",
       "specialty": "General Practitioner",
       "email": "mike@clinic.com",
@@ -9,7 +9,7 @@
       "roleId": 3
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Dr. Olivia Lee",
       "specialty": "Dermatologist",
       "email": "olivia@clinic.com",
@@ -17,7 +17,7 @@
       "roleId": 3
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Dr. Anil Patel",
       "specialty": "Orthopedic Surgeon",
       "email": "anil@clinic.com",
@@ -25,7 +25,7 @@
       "roleId": 3
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Dr. Sophia Martinez",
       "specialty": "Pediatrician",
       "email": "sophia@clinic.com",
@@ -33,7 +33,7 @@
       "roleId": 3
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Dr. David Kim",
       "specialty": "Cardiologist",
       "email": "david@clinic.com",
@@ -41,7 +41,7 @@
       "roleId": 3
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Dr. Sarah Johnson",
       "specialty": "Neurologist",
       "email": "sarah@clinic.com",
@@ -49,7 +49,7 @@
       "roleId": 3
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Dr. Ahmed Hassan",
       "specialty": "Ophthalmologist",
       "email": "ahmed@clinic.com",
@@ -57,7 +57,7 @@
       "roleId": 3
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Dr. Emily Carter",
       "specialty": "Gynecologist",
       "email": "emily@clinic.com",
@@ -65,7 +65,7 @@
       "roleId": 3
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Dr. Robert Green",
       "specialty": "Psychiatrist",
       "email": "robert@clinic.com",
@@ -73,7 +73,7 @@
       "roleId": 3
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "Dr. Hannah Wong",
       "specialty": "Dentist",
       "email": "hannah@clinic.com",
@@ -81,7 +81,7 @@
       "roleId": 3
     },
     {
-      "id": 11,
+      "id": "11",
       "name": "Dr. Peter Ochieng",
       "specialty": "Oncologist",
       "email": "peter@clinic.com",
@@ -89,7 +89,7 @@
       "roleId": 3
     },
     {
-      "id": 12,
+      "id": "12",
       "name": "Dr. Maria Gomez",
       "specialty": "ENT Specialist",
       "email": "maria@clinic.com",
@@ -97,7 +97,7 @@
       "roleId": 3
     },
     {
-      "id": 13,
+      "id": "13",
       "name": "Dr. William Brown",
       "specialty": "Radiologist",
       "email": "william@clinic.com",
@@ -105,7 +105,7 @@
       "roleId": 3
     },
     {
-      "id": 14,
+      "id": "14",
       "name": "Dr. Lucy Njoroge",
       "specialty": "Pathologist",
       "email": "lucy@clinic.com",
@@ -113,7 +113,7 @@
       "roleId": 3
     },
     {
-      "id": 15,
+      "id": "15",
       "name": "Dr. Kevin Wright",
       "specialty": "Urologist",
       "email": "kevin@clinic.com",
@@ -123,7 +123,7 @@
   ],
   "appointments": [
     {
-      "id": 501,
+      "id": "501",
       "patientId": 2,
       "doctorId": 3,
       "date": "2025-01-15T10:00:00Z",
@@ -131,7 +131,7 @@
       "reason": "Follow-up on allergy medication."
     },
     {
-      "id": 502,
+      "id": "502",
       "patientId": 4,
       "doctorId": 5,
       "date": "2025-04-10T14:30:00Z",
@@ -139,7 +139,7 @@
       "reason": "Neurology follow-up for migraines."
     },
     {
-      "id": 503,
+      "id": "503",
       "patientId": 2,
       "doctorId": 6,
       "date": "2025-04-15T09:00:00Z",
@@ -147,7 +147,7 @@
       "reason": "Orthopedic check on chronic knee pain."
     },
     {
-      "id": 504,
+      "id": "504",
       "patientId": 4,
       "doctorId": 3,
       "date": "2025-05-01T11:00:00Z",
@@ -161,7 +161,7 @@
       "date": "2025-10-10",
       "doctorId": 3,
       "status": "scheduled",
-      "id": 557
+      "id": "557"
     },
     {
       "fullName": "shosho",
@@ -170,7 +170,7 @@
       "date": "2025-10-11",
       "doctorId": 8,
       "status": "scheduled",
-      "id": 558
+      "id": "558"
     },
     {
       "fullName": "Ednah Kimani",
@@ -179,7 +179,7 @@
       "date": "2025-10-09",
       "doctorId": 10,
       "status": "scheduled",
-      "id": 559
+      "id": "559"
     },
     {
       "fullName": "Lewis",
@@ -188,7 +188,7 @@
       "date": "2025-10-09",
       "doctorId": 8,
       "status": "scheduled",
-      "id": 560
+      "id": "560"
     },
     {
       "fullName": "ian",
