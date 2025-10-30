@@ -31,10 +31,14 @@ function AppointmentsList() {
 
         return (
           <div
+            style={{
+              backgroundImage:
+                "url('https://cdn.pixabay.com/photo/2022/05/11/10/47/heart-7189096_960_720.jpg')",
+            }}
             key={appt.id}
             className="border border-gray-300 rounded-xl shadow-md p-4 bg-white text-center"
           >
-            <h2 className="text-xl font-semibold mb-2">{appt.patient}</h2>
+            <h2 className="text-xl font-semibold mb-2">{appt.fullName}</h2>
             <p className="text-gray-600 mb-1">
               Appointment Date: {formattedDate}
             </p>

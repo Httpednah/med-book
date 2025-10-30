@@ -59,7 +59,13 @@ function BookAppointmentForm() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50">
+    <div
+      className="flex items-center justify-center min-h-screen bg-gray-50 bg-no-repeat bg-cover"
+      style={{
+        backgroundImage:
+          "url('https://cdn.pixabay.com/photo/2015/02/08/03/55/calendar-628120_1280.jpg')",
+      }}
+    >
       <div className="w-full max-w-2xl bg-white border border-gray-200 rounded-2xl shadow-xl p-8">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
           Book Appointment
@@ -96,7 +102,6 @@ function BookAppointmentForm() {
             />
           </div>
 
-          
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Age
@@ -111,7 +116,6 @@ function BookAppointmentForm() {
             />
           </div>
 
-          
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Appointment Date
