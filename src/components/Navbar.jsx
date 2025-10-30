@@ -7,7 +7,7 @@ function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="bg-gradient-to-r from-blue-900 via-blue-800 to-cyan-800 text-cyan-100 shadow-md">
+    <nav className="bg-linear-to-r from-blue-900 via-blue-800 to-cyan-800 text-cyan-100 shadow-md">
       <div className="container mx-auto flex justify-between items-center p-4">
         {/* Logo */}
         <div className="text-2xl font-bold text-cyan-300 drop-shadow-sm">

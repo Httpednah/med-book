@@ -10,7 +10,7 @@ function BookAppointmentForm() {
   const [doctors, setDoctors] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/doctors")
+    fetch("https://medbook-db-json.onrender.com/doctors")
       .then((r) => r.json())
       .then((data) => setDoctors(data))
       .catch((err) => console.error("Failed to load doctors:", err));

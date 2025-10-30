@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import DoctorsCard from "./DoctorsCard";
 
+const baseUrl = `https://medbook-db-json.onrender.com`;
+
 function AppointmentsList() {
   const [appointments, setAppointments] = useState([]);
   const [doctors, setDoctors] = useState([]);
@@ -8,8 +10,8 @@ function AppointmentsList() {
   // Fetch doctors and appointments from JSON Server
   useEffect(() => {
     Promise.all([
-      fetch("http://localhost:3000/appointments").then((r) => r.json()),
-      fetch("http://localhost:3000/doctors").then((r) => r.json()),
+      fetch(`${baseUrl}appointments`).then((r) => r.json()),
+      fetch(`${baseUrl}/doctors`).then((r) => r.json()),
     ])
       .then(([appointmentsData, doctorsData]) => {
         setAppointments(appointmentsData);
