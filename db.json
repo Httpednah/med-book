@@ -225,6 +225,42 @@
       "date": "2025-10-09",
       "doctorId": 2,
       "status": "scheduled"
+    },
+    {
+      "id": "9b8e",
+      "fullName": "kimani",
+      "email": "kim@gmail.com",
+      "age": 24,
+      "date": "2025-10-10",
+      "doctorId": 11,
+      "status": "scheduled"
+    },
+    {
+      "id": "5b24",
+      "fullName": "kimani",
+      "email": "kim@gmail.com",
+      "age": 24,
+      "date": "2025-10-10",
+      "doctorId": 11,
+      "status": "scheduled"
+    },
+    {
+      "id": "86df",
+      "fullName": "kimani",
+      "email": "kim@gmail.com",
+      "age": 67,
+      "date": "2025-10-17",
+      "doctorId": 12,
+      "status": "scheduled"
+    },
+    {
+      "id": "df35",
+      "fullName": "ednah",
+      "email": "ednah@gmail",
+      "age": 65,
+      "date": "2025-10-03",
+      "doctorId": 12,
+      "status": "scheduled"
     }
   ]
 }

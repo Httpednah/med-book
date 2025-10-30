@@ -35,7 +35,7 @@ function BookAppointmentForm() {
     };
 
 
-    fetch("http://localhost:3000/appointments", {
+    fetch("https://medbook-db-json.onrender.com/appointments", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newAppointment),
