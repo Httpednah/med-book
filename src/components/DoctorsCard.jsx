@@ -1,5 +1,5 @@
 import React from "react";
-
+//this component displays a single doctors card
 const DoctorsCard = ({ doctor }) => {
   return (
     <div className="border border-gray-300 rounded-xl shadow-md p-4 bg-white text-center hover:shadow-lg transition-shadow">
