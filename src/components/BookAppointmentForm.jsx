@@ -15,48 +15,66 @@ function BookAppointmentForm() {
       .then((data) => setDoctors(data))
       .catch((err) => console.error("Failed to load doctors:", err));
   }, []);
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  //Validate fields first
+  if (!fullName || !email || !age || !date || !doctorId) {
+    toast.warning("Please fill in all fields.");
+    return;
+  }
 
-    //  Validate fields first
-    if (!fullName || !email || !age || !date || !doctorId) {
-      toast.warning("Please fill in all fields.");
-      return;
-    }
+  //Fetch existing appointments first
+  fetch("https://medbook-db-json.onrender.com/appointments")
+    .then((r) => r.json())
+    .then((appointments) => {
+      // Check if doctor is already booked for that date
+      const booked = appointments.find(
+        (appt) => appt.doctorId === parseInt(doctorId) && appt.date === date
+      );
 
-    const newAppointment = {
-      fullName: fullName.trim(),
-      email: email.trim(),
-      age: parseInt(age),
-      date,
-      doctorId: parseInt(doctorId),
-      status: "scheduled",
-    };
+      if (booked) {
+        toast.error(
+          "oops! sorry doctor already booked choose another date    =>   its not you its us"
+        );
+        throw new Error("Doctor already booked");
+      }
 
+      // If no conflict we proceed to create new appointment
+      const newAppointment = {
+        fullName: fullName.trim(),
+        email: email.trim(),
+        age: parseInt(age),
+        date,
+        doctorId: parseInt(doctorId),
+        status: "scheduled",
+      };
 
-    fetch("https://medbook-db-json.onrender.com/appointments", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newAppointment),
+      return fetch("https://medbook-db-json.onrender.com/appointments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newAppointment),
+      });
     })
-      .then((response) => {
-        if (!response.ok) throw new Error("Network response was not ok");
-        return response.json();
-      })
-      .then(() => {
-        toast.success("Appointment booked successfully!");
-        setFullName("");
-        setEmail("");
-        setAge("");
-        setDate("");
-        setDoctorId("");
-      })
-      .catch((error) => {
+    .then((response) => {
+      if (!response.ok) throw new Error("Network response was not ok");
+      return response.json();
+    })
+    .then(() => {
+      toast.success("Appointment booked successfully!");
+      setFullName("");
+      setEmail("");
+      setAge("");
+      setDate("");
+      setDoctorId("");
+    })
+    .catch((error) => {
+      if (error.message !== "Doctor already booked") {
         console.error("Error:", error);
         toast.error("There was a problem booking your appointment.");
-      });
-  };
+      }
+    });
+};
 
   return (
     <div
