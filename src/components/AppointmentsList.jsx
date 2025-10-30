@@ -10,7 +10,7 @@ function AppointmentsList() {
   // Fetch doctors and appointments from JSON Server
   useEffect(() => {
     Promise.all([
-      fetch(`${baseUrl}appointments`).then((r) => r.json()),
+      fetch(`${baseUrl}/appointments`).then((r) => r.json()),
       fetch(`${baseUrl}/doctors`).then((r) => r.json()),
     ])
       .then(([appointmentsData, doctorsData]) => {
