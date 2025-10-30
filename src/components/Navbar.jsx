@@ -18,8 +18,7 @@ function Navbar() {
           <button
             onClick={toggleMenu}
             className="focus:outline-none text-cyan-200 hover:text-cyan-100 transition"
-          >
-          </button>
+          ></button>
         </div>
 
         {/* Nav Links */}
